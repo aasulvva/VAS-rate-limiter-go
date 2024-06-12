@@ -33,15 +33,12 @@ func (rl *RateLimiter) GetLimiter(ip string) *rate.Limiter {
 	rl.Mutex.Lock()
 	defer rl.Mutex.Unlock()
 
-	// Load limiter config
-	cfg := config.GetInstance().RateLimiter
-
 	// See if limiter is in map
 	limiter, ok := rl.Limiters[ip]
 	if !ok {
 		log.Printf("[LIMITER] New visitor %s", ip)
 		rl.Limiters[ip] = Visitor{
-			Limiter:  rate.NewLimiter(rate.Limit(cfg.MaxRequests), int(cfg.BurstLimit)),
+			Limiter:  rate.NewLimiter(rate.Limit(rl.Configuration.MaxRequests), int(rl.Configuration.BurstLimit)),
 			LastSeen: time.Now(),
 		}
 		return rl.Limiters[ip].Limiter
