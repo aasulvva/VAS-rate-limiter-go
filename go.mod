@@ -1,6 +1,6 @@
 module github.com/aasulvva/rate-limiter-go
 
-go 1.21
+go 1.22.2
 
 require (
 	github.com/aasulvva/VAS-error-handling-go v0.0.0-20240612135426-4938ecce7d9c // indirect
