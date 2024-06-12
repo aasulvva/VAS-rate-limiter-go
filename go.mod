@@ -1,4 +1,4 @@
-module github.com/aasulvva/rate-limiter-go
+module github.com/aasulvva/VAS-rate-limiter-go
 
 go 1.22.2
 
