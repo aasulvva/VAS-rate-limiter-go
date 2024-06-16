@@ -16,10 +16,10 @@ type RateLimiter struct {
 	VisitorAgeThreshold int
 	// Frequency of cleanup (in seconds)
 	CleanupFrequency int
-	Configuration    Config
+	Configuration    LimiterConfig
 }
 
-func NewLimiter(config Config) *RateLimiter {
+func NewLimiter(config LimiterConfig) *RateLimiter {
 	return &RateLimiter{
 		Mutex:               sync.Mutex{},
 		Limiters:            make(map[string]Visitor),
@@ -36,14 +36,14 @@ func (rl *RateLimiter) GetLimiter(ip string) *rate.Limiter {
 	// See if limiter is in map
 	limiter, ok := rl.Limiters[ip]
 	if !ok {
-		log.Printf("[LIMITER] New visitor %s", ip)
+		log.Printf("[LIMITER] New visitor %s\n", ip)
 		rl.Limiters[ip] = Visitor{
 			Limiter:  rate.NewLimiter(rate.Limit(rl.Configuration.MaxRequests), int(rl.Configuration.BurstLimit)),
 			LastSeen: time.Now(),
 		}
 		return rl.Limiters[ip].Limiter
 	} else {
-		log.Printf("[LIMITER] Visitor %s already seen! Last seen: %s", ip, limiter.LastSeen)
+		log.Printf("[LIMITER] Visitor %s already seen! Last seen: %s\n", ip, limiter.LastSeen)
 		rl.Limiters[ip] = Visitor{
 			Limiter:  rl.Limiters[ip].Limiter,
 			LastSeen: time.Now(),
