@@ -86,7 +86,7 @@ func (cl *CooldownLimiter) LimiterHandler(next http.HandlerFunc) http.HandlerFun
 
 		// Check limiter
 		if !limiter.Allow() {
-			error_handling.LogError(w, error_handling.RateLimitError(extractIP(r.RemoteAddr)))
+			error_handling.LogError(w, error_handling.RateLimitCooldownError(extractIP(r.RemoteAddr), cl.Configuration.Cooldown, cl.Name))
 			return
 		}
 
