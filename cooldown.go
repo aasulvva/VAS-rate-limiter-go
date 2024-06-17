@@ -25,8 +25,8 @@ func NewCooldownLimiter(name string, config CooldownConfig) *CooldownLimiter {
 		Name:                name,
 		Mutex:               sync.Mutex{},
 		Limiters:            make(map[string]Visitor),
-		VisitorAgeThreshold: 180,
-		CleanupFrequency:    120,
+		VisitorAgeThreshold: int(config.Cooldown * 2),
+		CleanupFrequency:    int(config.Cooldown * 3 / 2),
 		Configuration:       config,
 	}
 }

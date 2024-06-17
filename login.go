@@ -21,8 +21,8 @@ func NewLoginLimiter(config CooldownConfig) *LoginLimiter {
 	return &LoginLimiter{
 		Mutex:               sync.Mutex{},
 		Limiters:            make(map[LoginIdentifier]Visitor),
-		VisitorAgeThreshold: 180,
-		CleanupFrequency:    120,
+		VisitorAgeThreshold: int(config.Cooldown * 2),
+		CleanupFrequency:    int(config.Cooldown * 3 / 2),
 		Configuration:       config,
 	}
 }
