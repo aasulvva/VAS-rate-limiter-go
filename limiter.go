@@ -2,6 +2,7 @@ package limiter
 
 import (
 	error_handling "github.com/aasulvva/VAS-error-handling-go"
+	util "github.com/aasulvva/VAS-util-go"
 	"golang.org/x/time/rate"
 	"log"
 	"net/http"
@@ -80,11 +81,11 @@ func (rl *RateLimiter) LimiterHandler(next http.HandlerFunc) http.HandlerFunc {
 		log.Printf("[LIMITER] New %s request on %s from %s\n", r.Method, r.RequestURI, r.RemoteAddr)
 
 		// Get limiter for visitor
-		limiter := rl.GetLimiter(extractIP(r.RemoteAddr))
+		limiter := rl.GetLimiter(util.ExtractIP(r.RemoteAddr))
 
 		// Check limiter
 		if !limiter.Allow() {
-			error_handling.LogError(w, error_handling.RateLimitError(extractIP(r.RemoteAddr)))
+			error_handling.LogError(w, error_handling.RateLimitError(util.ExtractIP(r.RemoteAddr)))
 			return
 		}
 

@@ -2,5 +2,7 @@ github.com/aasulvva/VAS-error-handling-go v0.0.0-20240612135426-4938ecce7d9c h1:
 github.com/aasulvva/VAS-error-handling-go v0.0.0-20240612135426-4938ecce7d9c/go.mod h1:im88VygRF/NUBIalabWskGp8dOnjyFFVOGYzuV+dJEA=
 github.com/aasulvva/VAS-error-handling-go v1.1.0 h1:/0jubgZqXYe6PowkVhbEngyhoejPJ73OPzbbc8DJ044=
 github.com/aasulvva/VAS-error-handling-go v1.1.0/go.mod h1:im88VygRF/NUBIalabWskGp8dOnjyFFVOGYzuV+dJEA=
+github.com/aasulvva/VAS-util-go v1.0.1 h1:ZHhUq8Qm0MTIod1XNeGya1IC4pmft+3QR8/mr/1VtGU=
+github.com/aasulvva/VAS-util-go v1.0.1/go.mod h1:Y9QMTKo+YKH36I3v1qhpqRffje7m764uilogfC4MOkM=
 golang.org/x/time v0.5.0 h1:o7cqy6amK/52YcAKIPlM3a+Fpj35zvRj2TP+e1xFSfk=
 golang.org/x/time v0.5.0/go.mod h1:3BpzKBy/shNhVucY/MWOyx10tF3SFh9QdLuxbVysPQM=
